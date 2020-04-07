@@ -1,0 +1,20 @@
+import datetime
+
+def age(x):
+    currentYear = datetime.datetime.now().year
+    a=currentYear-int(x)+100
+    return a
+
+excel=open('Excel.csv','w')
+excel.write('Name, Age , Year in 100 \n')
+text_document=open('Text.csv','r')
+text=text_document.readlines()
+header=text[0].strip().split(',')
+print(header)
+for line in text[1:]:
+    lines = line.strip().split(',')
+    row= '{},{},{}'.format(lines[0],lines[1],age(lines[1]))
+    print(row)
+    excel.write(row)
+    excel.write('\n')
+excel.close()
